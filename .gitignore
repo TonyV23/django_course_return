@@ -1,4 +1,5 @@
 venv/
+<<<<<<< HEAD
 app/migrations/
 app/models/__pycache__/
 app/views/__pycache__/
