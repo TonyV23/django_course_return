@@ -1,0 +1,7 @@
+venv/
+app/migrations/
+app/models/__pycache__/
+app/views/__pycache__/
+django_course_return/__pycache__/
+app/__pycache__/
+app/static/
