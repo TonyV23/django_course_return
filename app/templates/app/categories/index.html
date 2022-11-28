@@ -11,7 +11,23 @@
         <div class="card-header py-3">
             <a href="{% url 'categories_create' %}" class="btn btn-primary">Nouveau</a>
         </div>
+
         <div class="card-body">
+
+        <div class="card-body">   
+            <!-- messages for user -->
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role= "alert">
+                    <i class="fas fa-alert mr-1"></i>{{ message }}
+                    <button type="button" class="close " data-dismiss="alert" aria-label="close">
+                        <span arial-hidden="true">&times;</span>
+                    </button>
+                </div>    
+                {% endfor %} 
+            {% endif %}
+        <!-- end messages for user -->
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
