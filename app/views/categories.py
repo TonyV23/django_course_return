@@ -2,6 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from app.models import Category
 from app.forms import CategoryForm
+from django.contrib import messages
 
 def index(request):
     assert isinstance(request, HttpRequest)
@@ -29,6 +30,7 @@ def store(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Category successfully saved")
         return redirect('/categories')
     
 def edit(request, id):
@@ -54,9 +56,11 @@ def edit(request, id):
             form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
+            messages.success(request, "Category successfully modified")
         return redirect('/categories')
     
 def delete(request, id):
     category = Category.objects.get(pk=id)
     category.delete()
+    messages.success(request, "Category successfully deleted")
     return redirect('/categories')
