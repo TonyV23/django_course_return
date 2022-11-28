@@ -6,3 +6,6 @@ class Customer(models.Model):
     tel = models.CharField(max_length=45)
     email = models.CharField(max_length=45)
     address = models.CharField(max_length=45)
+
+    def __str__(self) -> str:
+        return self.first_name +" "+self.last_name
