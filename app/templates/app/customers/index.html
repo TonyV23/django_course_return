@@ -1,0 +1,71 @@
+{% extends 'app/layouts/default.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Customers</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="{% url 'customers_create' %}" class="btn btn-primary">Nouveau</a>
+        </div>
+
+        <div class="card-body">
+
+        <div class="card-body">   
+            <!-- messages for user -->
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role= "alert">
+                    <i class="fas fa-alert mr-1"></i>{{ message }}
+                    <button type="button" class="close " data-dismiss="alert" aria-label="close">
+                        <span arial-hidden="true">&times;</span>
+                    </button>
+                </div>    
+                {% endfor %} 
+            {% endif %}
+        <!-- end messages for user -->
+
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Customer Email</th>
+                        <th>Customer Telephone</th>
+                        <th>Customer Address</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for customer in customers %}
+                    <tr>
+                        <td>{{ customer.id }}</td>
+                        <td>{{ customer.first_name }}</td>
+                        <td>{{ customer.last_name }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.tel }}</td>
+                        <td>{{ customer.address }}</td>
+                        <td>
+                            <a href="{% url 'customers_edit' customer.id %}" class="btn btn-primary">Edit</a>
+
+                            <form action="{% url 'customers_delete' customer.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" onclick="return confirm('Voulez vous supprimer ce client ?')" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
