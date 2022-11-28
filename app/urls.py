@@ -25,4 +25,10 @@ urlpatterns = [
     path('categories/store', views.categories.store, name='categories_store'),
     path('categories/edit/<int:id>', views.categories.edit, name='categories_edit'),
     path('categories/delete/<int:id>', views.categories.delete, name='categories_delete'),
+
+    path('products/', views.products.index, name='products_index'),
+    path('products/create', views.products.create, name='products_create'),
+    path('products/store', views.products.store, name='products_store'),
+    path('products/edit/<int:id>', views.products.edit, name='products_edit'),
+    path('products/delete/<int:id>', views.products.delete, name='products_delete'),
 ]
