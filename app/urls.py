@@ -37,4 +37,10 @@ urlpatterns = [
     path('customers/store', views.customers.store, name='customers_store'),
     path('customers/edit/<int:id>', views.customers.edit, name='customers_edit'),
     path('customers/delete/<int:id>', views.customers.delete, name='customers_delete'),
+
+    path('orders/', views.orders.index, name='orders_index'),
+    path('orders/create', views.orders.create, name='orders_create'),
+    path('orders/store', views.orders.store, name='orders_store'),
+    path('orders/edit/<int:id>', views.orders.edit, name='orders_edit'),
+    path('orders/delete/<int:id>', views.orders.delete, name='orders_delete'),
 ]
