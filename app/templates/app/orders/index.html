@@ -47,13 +47,13 @@
               <td>{{ order.total }}</td>
               <td>
                 <a
-                  href="#"
+                  href="{% url 'orders_edit' order.id %}"
                   class="btn btn-primary"
                   >Edit</a
                 >
 
                 <form
-                  action="#"
+                  action="{% url 'orders_delete' order.id %}"
                   method="post"
                 >
                   {% csrf_token %}
