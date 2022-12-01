@@ -86,7 +86,17 @@
     <!-- Page level custom scripts -->
     <script src="{% static 'app/js/demo/chart-area-demo.js' %}"></script>
     <script src="{% static 'app/js/demo/chart-pie-demo.js' %}"></script>
+
     <!-- {% block scripts %}{% endblock %} -->
+    <!-- Page level plugins -->
+<script src="{% static 'app/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'app/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static 'app/js/demo/datatables-demo.js' %}"></script>
+<script src="{% static 'app/js/main.js' %}"></script>
+
+    {% comment %} {% block scripts %}{% endblock %} {% endcomment %}
 </body>
 
 </html>
