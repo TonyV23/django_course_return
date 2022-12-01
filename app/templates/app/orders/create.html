@@ -10,7 +10,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">New order</h6>
+            <h6 class="m-0 font-weight-bold text-primary">New Order</h6>
         </div>
         <div class="card-body">
                 <div class="container">
@@ -20,7 +20,20 @@
                             {{ form.customer|as_crispy_field }}
                         </div>
                         <div class="form-group">
+                            <label>Categories</label>
+                            <select name="category" id="category_id" class="form-control">
+                                <option value="">---------</option>
+                                {% for category in categories %}
+                                <option value="{{category.id}}">{{category.category_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
                             {{ form.product|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            <label>Unit Price</label>
+                            <input type="text" name="unit_price" value="" id="unit_price" class="form-control">
                         </div>
                         <div class="form-group">
                             {{ form.qty|as_crispy_field }}
