@@ -1,8 +1,15 @@
 venv/
-<<<<<<< HEAD
 app/migrations/
 app/models/__pycache__/
 app/views/__pycache__/
 django_course_return/__pycache__/
 app/__pycache__/
 app/static/
+
+app/migrations/
+app/static/
+app/__pycache__/
+app/views/__pycache__/
+django_course_return/__pycache__/
+app/models/__pycache__/
+app/forms/__pycache__/

@@ -1,0 +1,78 @@
+{% extends 'app/layouts/default.html' %} {% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <a href="{% url 'orders_create' %}" class="btn btn-primary"
+        >Nouveau</a
+      >
+    </div>
+    <div class="card-body">
+      {% if messages %}
+       {% for message in messages %} 
+       <p class="alert alert-success w-100 h-100">{{ message }} </p>
+       {% endfor %}
+      {% endif %}
+
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Customer Name</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Qty</th>
+              <th>Total</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td>{{ order.id }}</td>
+              <td>{{ order.customer.first_name }} {{ order.customer.last_name }}</td>
+              <td>{{ order.product.product_name }}</td>
+              <td>{{ order.product.unit_price }}</td>
+              <td>{{ order.qty }}</td>
+              <td>{{ order.total }}</td>
+              <td>
+                <a
+                  href="{% url 'orders_edit' order.id %}"
+                  class="btn btn-primary"
+                  >Edit</a
+                >
+
+                <form
+                  action="{% url 'orders_delete' order.id %}"
+                  method="post"
+                >
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    onclick="return confirm('Voulez vous supprimer cette commande ?')"
+                    class="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

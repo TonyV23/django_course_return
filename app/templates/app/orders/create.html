@@ -1,0 +1,52 @@
+{% extends 'app/layouts/default.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Orders</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">New Order</h6>
+        </div>
+        <div class="card-body">
+                <div class="container">
+                    <form action="{% url 'orders_store' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.customer|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            <label>Categories</label>
+                            <select name="category" id="category_id" class="form-control">
+                                <option value="">---------</option>
+                                {% for category in categories %}
+                                <option value="{{category.id}}">{{category.category_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            {{ form.product|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            <label>Unit Price</label>
+                            <input type="text" name="unit_price" value="" id="unit_price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            {{ form.qty|as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.total|as_crispy_field }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
