@@ -62,7 +62,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Users</a>
+                <a class="collapse-item" href="{% url 'users_index' %}">Users</a>
                 <a class="collapse-item" href="#">Roles</a>
             </div>
         </div>
@@ -73,7 +73,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{% url 'logout' %}">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>
