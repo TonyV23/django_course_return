@@ -45,5 +45,11 @@ urlpatterns = [
     path('orders/edit/<int:id>', views.orders.edit, name='orders_edit'),
     path('orders/store', views.orders.store, name='orders_store'),
     path('orders/delete/<int:id>', views.orders.delete, name='orders_delete'),
+
+    path('users/', users.index, name='users_index'),
+    path('login/', users.user_login, name='users_login'),
+    path('register/', users.register, name='users_register'),
+    path('users/store', users.store, name='users_store'),
+    path('logout/', users.user_logout, name='logout'),
     
 ]
